@@ -10,17 +10,20 @@ namespace EingabeDezimalWerte
     {
         static void Main(string[] args)
         {
+            //declaration for input variables
             string input = string.Empty;
             string input2 = string.Empty;
 
+            //declaration for calculation variables
             double a = 0;
             double b = 0;
 
 
             //create header
-            Console.WriteLine("####################################################\n" +
-                "\t\tFlaechen Berechnung\n" +
-                "####################################################");
+            const string headerText = "Flaechen Berechnung";
+            Console.WriteLine($"{new string('#', Console.WindowWidth - 1)}\n" +
+                $"{new string(' ',(Console.WindowWidth - headerText.Length) / 2)}{headerText}\n" +
+                $"{new string('#', Console.WindowWidth - 1)}");
 
             //runs as long as the input is not usable
             while (string.IsNullOrEmpty(input) || string.IsNullOrEmpty(input2))
