@@ -25,6 +25,7 @@ namespace EingabeDezimalWerte
                 $"{new string(' ',(Console.WindowWidth - headerText.Length) / 2)}{headerText}\n" +
                 $"{new string('#', Console.WindowWidth - 1)}");
 
+
             //runs as long as the input is not usable
             while (string.IsNullOrEmpty(input) || string.IsNullOrEmpty(input2))
             {
