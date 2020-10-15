@@ -9,7 +9,7 @@ namespace Formelsammlung
     //berechnet das Volumen verschiedener Körper
     class Volumenrechner
     {
-        public void Eingabe()
+        public void EingabeAuswahl()
         {
             string eingabe = string.Empty;
 
@@ -84,6 +84,51 @@ namespace Formelsammlung
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////
                 ///
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////
+            }
+        }
+
+        bool EingabeKoerper(char choice)
+        {
+
+
+            switch (choice)
+            {
+                case 'W':
+
+                    break;
+
+                case 'Q':
+
+                    break;
+
+                case 'P':
+
+                    break;
+
+                case 'T':
+
+                    break;
+
+                case 'Z':
+
+                    break;
+
+                case 'G':
+
+                    break;
+
+                case 'K':
+
+                    break;
+                case 'A':
+                    Console.WriteLine(/*nachricht vergeben?*/);
+                    break;
+
+                //Ungültige Eingabe
+                default:
+                    Console.WriteLine("Bitte nur den Buchstaben in den angegebenen Klammern eingeben.\n");
+                    eingabe = string.Empty;
+                    break;
             }
         }
 
