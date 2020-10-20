@@ -19,7 +19,7 @@ namespace EingabeDezimalWerte
             double b = 0;
 
 
-            //create header
+            //create semi-dynamic header
             const string headerText = "Flaechen Berechnung";
             Console.WriteLine($"{new string('#', Console.WindowWidth - 1)}\n" +
                 $"{new string(' ',(Console.WindowWidth - headerText.Length) / 2)}{headerText}\n" +
