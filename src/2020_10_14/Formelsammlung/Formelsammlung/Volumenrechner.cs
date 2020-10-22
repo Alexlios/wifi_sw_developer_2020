@@ -87,7 +87,7 @@ namespace Formelsammlung
             }
         }
 
-        bool EingabeKoerper(char choice)
+        void EingabeKoerper(char choice)
         {
 
 
@@ -127,7 +127,6 @@ namespace Formelsammlung
                 //Ungültige Eingabe
                 default:
                     Console.WriteLine("Bitte nur den Buchstaben in den angegebenen Klammern eingeben.\n");
-                    eingabe = string.Empty;
                     break;
             }
         }

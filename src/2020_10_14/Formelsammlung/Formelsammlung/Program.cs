@@ -40,7 +40,7 @@ namespace Formelsammlung
                     //Nutzer will Volumen berechnen
                     case 'V':
                         Volumenrechner volumenrechner = new Volumenrechner();
-                        volumenrechner.Eingabe();
+                        volumenrechner.EingabeAuswahl();
                         eingabe = string.Empty;
                         break;
 
