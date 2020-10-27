@@ -34,6 +34,8 @@ namespace Uebungen
                         break;
 
                     case "3":
+                        Uebung3.Start();
+                        isInputValid = true;
                         break;
 
                     case "4":
