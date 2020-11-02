@@ -48,6 +48,7 @@
     <Compile Include="Uebung1.cs" />
     <Compile Include="Uebung2.cs" />
     <Compile Include="Uebung3.cs" />
+    <Compile Include="Uebung8.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

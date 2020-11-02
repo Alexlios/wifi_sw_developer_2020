@@ -18,7 +18,7 @@ namespace Uebungen
             while (!isInputValid)
             {
                 //reading the input
-                Console.Write("Bitte eine Zahl von 1 - 8 angeben um die jeweilige Uebung auszuwaehlen: ");
+                Console.Write("Bitte eine Zahl von 1 - 8 (1,2,3,8) angeben um die jeweilige Uebung auszuwaehlen: ");
                 input = Console.ReadLine();
 
                 switch(input)
@@ -51,6 +51,8 @@ namespace Uebungen
                         break;
 
                     case "8":
+                        Uebung8.Start();
+                        isInputValid = true;
                         break;
 
                     //input is invalid:
