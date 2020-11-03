@@ -8,6 +8,10 @@ namespace Uebungen
 {
     class Uebung8
     {
+        //TODO: X usgabe: farblich markieren (Console.ForegroundColor = ConsoleColor.Red;)
+        // X ausgabe: per Cursor Position
+        // danach auch wieder hoch
+        //x und y getrennt einlesen
         public static void Start()
         {
             int windHeight = Console.WindowHeight;
@@ -19,97 +23,100 @@ namespace Uebungen
             string input = string.Empty;
             bool isInputValid = false;
 
-            int[][] coordinates = new int[windHeight][];
-            for(int i = 0;i < windHeight;++i)
-            {
-                coordinates[i] = new int[windWidth];
-                for(int n = 0;n < windWidth;++n)
-                {
-                    coordinates[i][n] = 32;
-                }
-            }
+            int iterations = 0;
 
-            while(!isInputValid)
+            //ask for number of iterations
+            while (!isInputValid)
             {
-                Console.Write($"Bitte Koordinate angeben (X <= {windWidth} Y <= {windHeight}): ");
+                isInputValid = true;
+                Console.Write("Bitte die Anzahl Durchlaeufe angeben die Sie durchfuehren wollen: ");
                 input = Console.ReadLine();
 
-                string[] xyCoordinate = input.Split(' ');
-
-                if(input.Length >= 3)
+                if (!StringIsNumber(input))
                 {
-                    if (xyCoordinate.Length < 3 && xyCoordinate.Length > 1)
+                    Console.WriteLine("Angabe war keine Zahl!");
+                    isInputValid = false;
+                }
+
+            }
+
+            Console.Clear();
+            iterations = int.Parse(input);
+
+            for (int i = 0; i < iterations; i++)
+            {
+
+                isInputValid = false;
+                while (!isInputValid)
+                {
+                    Console.Write($"Bitte X-Koordinate angeben (X <= {windWidth}): ");
+                    input = Console.ReadLine();
+
+                    if (!StringIsNumber(input))
                     {
-                        isInputValid = true;
-                        foreach (char c in xyCoordinate[0])
-                        {
-                            if (!char.IsDigit(c))
-                            {
-                                isInputValid = false;
-                                break;
-                            }
-                        }
-
-                        if (isInputValid)
-                        {
-                            foreach (char c in xyCoordinate[1])
-                            {
-                                if (!char.IsDigit(c))
-                                {
-                                    isInputValid = false;
-                                    break;
-                                }
-                            }
-                        }
-
-                        if (isInputValid)
-                        {
-                            x = int.Parse(xyCoordinate[0]) - 1;
-                            y = int.Parse(xyCoordinate[1]) - 1;
-
-                            if (x < 0 || x > windWidth || y < 0 || y > windHeight)
-                            {
-                                isInputValid = false;
-                                Console.WriteLine($"Bitte die Koordinaten nur in den Bereichen X: von 1 bis {windWidth} Y: von 1 bis {windHeight}!");
-                                continue;
-                            }
-
-                            coordinates[y][x] = 'X';
-
-                            if (isInputValid)
-                            {
-                                Console.Clear();
-                                foreach (int[] arr in coordinates)
-                                {
-                                    foreach (char i in arr)
-                                    {
-                                        Console.Write(i);
-                                    }
-                                }
-                            }
-                        }
-                        else
-                        {
-                            isInputValid = false;
-                            Console.WriteLine($"Bitte Koordinaten im Format (X Y) angeben. Im Bereich X <= {windWidth} und  Y <= {windHeight}!");
-                            continue;
-                        }
+                        Console.Write("Angabe war keine Zahl! ");
+                        continue;
                     }
                     else
                     {
-                        isInputValid = false;
-                        Console.WriteLine($"Bitte Koordinaten im Format (X Y) angeben. Im Bereich X <= {windWidth} und  Y <= {windHeight}!");
+                        x = int.Parse(input);
+
+                        if (x > windWidth)
+                        {
+                            Console.Write("X-Koordinate zu gross! ");
+                            continue;
+                        }
+                    }
+
+                    Console.WriteLine($"Bitte Y-Koordinate angeben Y <= {windHeight}): ");
+                    input = Console.ReadLine();
+
+                    if (!StringIsNumber(input))
+                    {
+                        Console.Write("Angabe war keine Zahl! ");
                         continue;
                     }
-                }
-                else
-                {
-                    isInputValid = false;
-                    Console.WriteLine($"Bitte Koordinaten im Format (X Y) angeben. Im Bereich X <= {windWidth} und  Y <= {windHeight}!");
+                    else
+                    {
+                        y = int.Parse(input);
+
+                        if (y > windWidth)
+                        {
+                            Console.Write("Y-Koordinate zu gross! ");
+                            continue;
+                        }
+                    }
+
+                    Console.SetCursorPosition(x, y);
+                    Console.Write('X');
+                    Console.SetCursorPosition(0, 0);
                 }
             }
 
             Console.ReadKey();
+        }
+
+        static bool StringIsNumber(string input)
+        {
+            bool isNumber = true;
+
+            if (input.Length <= 0)
+            {
+                isNumber = false;
+            }
+            else
+            {
+                foreach (char c in input)
+                {
+                    if (!char.IsDigit(c))
+                    {
+                        isNumber = false;
+                        break;
+                    }
+                }
+            }
+
+            return isNumber;
         }
     }
 }
