@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WIFI.ToolLibrary.ConsoleIO</name>
+    </assembly>
+    <members>
+        <member name="M:WIFI.ToolLibrary.ConsoleIO.ConsoleTools.DisplayMesssage(System.String)">
+            <summary>
+            Displays a given message
+            </summary>
+            <param name="message">The message that will be displayed</param>
+        </member>
+        <member name="M:WIFI.ToolLibrary.ConsoleIO.ConsoleTools.DisplayMesssage(System.String,System.ConsoleColor)">
+            <summary>
+            Displays a given message with a given System.ConsoleColor
+            </summary>
+            <param name="message">The message that will be displayed</param>
+            <param name="messageColor">The System.ConsoleColor that will be used</param>
+        </member>
+        <member name="M:WIFI.ToolLibrary.ConsoleIO.ConsoleTools.GetInt(System.String)">
+            <summary>
+            Reads a System.Int32 value from the console
+            </summary>
+            <param name="inputPrompt">Prompt the user will see before the input</param>
+            <returns>The System.Int32 that was read</returns>
+        </member>
+        <member name="M:WIFI.ToolLibrary.ConsoleIO.ConsoleTools.GetDouble(System.String)">
+            <summary>
+            Reads a System.Double value from the console
+            </summary>
+            <param name="inputPrompt">Prompt the user will see before the input</param>
+            <returns>The System.Double that was read</returns>
+        </member>
+        <member name="M:WIFI.ToolLibrary.ConsoleIO.ConsoleTools.GetString(System.String)">
+            <summary>
+            Reads a System.String from the console
+            </summary>
+            <param name="inputPrompt">Prompt the user will see before the input</param>
+            <returns>The System.String that was read</returns>
+        </member>
+        <member name="M:WIFI.ToolLibrary.ConsoleIO.ConsoleTools.GetBool(System.String)">
+            <summary>
+            Reads a System.Boolean from the console
+            </summary>
+            <param name="inputPrompt">Prompt the user will see before the input</param>
+            <returns>The System.Boolean that was read</returns>
+        </member>
+        <member name="M:WIFI.ToolLibrary.ConsoleIO.ConsoleTools.GetDateTime(System.String)">
+            <summary>
+            Reads a System.DateTime object value from the console. Input format: [dd.MM.yyyy hh:mm:ss]
+            </summary>
+            <param name="inputPrompt">Prompt the user will see before the input</param>
+            <returns>The System.DateTime object that was read</returns>
+        </member>
+        <member name="M:WIFI.ToolLibrary.ConsoleIO.ConsoleTools.GetDateTime(System.String,System.String)">
+            <summary>
+            Reads a System.DateTime object value with a specified format from the console
+            </summary>
+            <param name="inputPrompt">Prompt the user will see before the input</param>
+            <param name="inputFormat">The format in which the DateTime is read (example: [dd.MM.yyyy hh:mm:ss])</param>
+            <returns>The System.DateTime object that was read</returns>
+        </member>
+        <member name="M:WIFI.ToolLibrary.ConsoleIO.ConsoleTools.StringIsInteger(System.String)">
+            <summary>
+            Checks if an input is a number or not. The number has to be > 0
+            </summary>
+            <param name="input">the input that will be checked</param>
+            <returns>true: input was a number   false: input was not a number</returns>
+        </member>
+        <member name="M:WIFI.ToolLibrary.ConsoleIO.ConsoleTools.StringIsDouble(System.String)">
+            <summary>
+            Checks if an input is a double or not. The number has to be > 0
+            </summary>
+            <param name="input">the input that will be checked</param>
+            <returns>true: input was a double   false: input was not a double</returns>
+        </member>
+    </members>
+</doc>

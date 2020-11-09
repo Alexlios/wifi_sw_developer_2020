@@ -17,10 +17,10 @@ namespace WIFI.ToolLibrary.ConsoleIO
         }
 
         /// <summary>
-        /// Displays a given message with a given ConsoleColor
+        /// Displays a given message with a given System.ConsoleColor
         /// </summary>
         /// <param name="message">The message that will be displayed</param>
-        /// <param name="messageColor">The ConsoleColor that will be used</param>
+        /// <param name="messageColor">The System.ConsoleColor that will be used</param>
         public static void DisplayMesssage(string message, ConsoleColor messageColor)
         {
             ConsoleColor oldColor = Console.ForegroundColor;
