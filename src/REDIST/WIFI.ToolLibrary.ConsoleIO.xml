@@ -4,6 +4,11 @@
         <name>WIFI.ToolLibrary.ConsoleIO</name>
     </assembly>
     <members>
+        <member name="T:WIFI.ToolLibrary.ConsoleIO.ConsoleTools">
+            <summary>
+            Verschiedene Methoden zur Verwendung in Konsolen-Applikationen
+            </summary>
+        </member>
         <member name="M:WIFI.ToolLibrary.ConsoleIO.ConsoleTools.DisplayMesssage(System.String)">
             <summary>
             Displays a given message
@@ -47,7 +52,7 @@
         </member>
         <member name="M:WIFI.ToolLibrary.ConsoleIO.ConsoleTools.GetDateTime(System.String)">
             <summary>
-            Reads a System.DateTime object value from the console. Input format: [dd.MM.yyyy hh:mm:ss]
+            Reads a System.DateTime object value from the console. Input format: [dd.MM.yyyy HH:mm:ss]
             </summary>
             <param name="inputPrompt">Prompt the user will see before the input</param>
             <returns>The System.DateTime object that was read</returns>
@@ -57,7 +62,7 @@
             Reads a System.DateTime object value with a specified format from the console
             </summary>
             <param name="inputPrompt">Prompt the user will see before the input</param>
-            <param name="inputFormat">The format in which the DateTime is read (example: [dd.MM.yyyy hh:mm:ss])</param>
+            <param name="inputFormat">The format in which the DateTime is read (example: [dd.MM.yyyy HH:mm:ss])</param>
             <returns>The System.DateTime object that was read</returns>
         </member>
         <member name="M:WIFI.ToolLibrary.ConsoleIO.ConsoleTools.StringIsInteger(System.String)">

@@ -3,6 +3,9 @@ using System.Globalization;
 
 namespace WIFI.ToolLibrary.ConsoleIO
 {
+    /// <summary>
+    /// Verschiedene Methoden zur Verwendung in Konsolen-Applikationen
+    /// </summary>
     public class ConsoleTools
     {
         #region public Output
@@ -110,10 +113,16 @@ namespace WIFI.ToolLibrary.ConsoleIO
         /// <returns>The System.String that was read</returns>
         public static string GetString(string inputPrompt)
         {
-            //printing specified prompt, reading the input and returning it
             string result = string.Empty;
-            while(string.IsNullOrEmpty(result))
+
+            //printing prompt and awaiting first input
+            Console.Write(inputPrompt);
+            result = Console.ReadLine();
+
+            //if the first input was empty and while it is empty, repeating the previous step with error message
+            while (string.IsNullOrEmpty(result))
             {
+                Console.WriteLine("Input was empty!");
                 Console.Write(inputPrompt);
                 result = Console.ReadLine();
             }
@@ -167,20 +176,20 @@ namespace WIFI.ToolLibrary.ConsoleIO
         //Get File,Directory
 
         /// <summary>
-        /// Reads a System.DateTime object value from the console. Input format: [dd.MM.yyyy hh:mm:ss]
+        /// Reads a System.DateTime object value from the console. Input format: [dd.MM.yyyy HH:mm:ss]
         /// </summary>
         /// <param name="inputPrompt">Prompt the user will see before the input</param>
         /// <returns>The System.DateTime object that was read</returns>
         public static DateTime GetDateTime(string inputPrompt)
         {
-            return GetDateTime(inputPrompt, "dd.MM.yyyy hh:mm:ss");
+            return GetDateTime(inputPrompt, "dd.MM.yyyy HH:mm:ss");
         }
 
         /// <summary>
         /// Reads a System.DateTime object value with a specified format from the console
         /// </summary>
         /// <param name="inputPrompt">Prompt the user will see before the input</param>
-        /// <param name="inputFormat">The format in which the DateTime is read (example: [dd.MM.yyyy hh:mm:ss])</param>
+        /// <param name="inputFormat">The format in which the DateTime is read (example: [dd.MM.yyyy HH:mm:ss])</param>
         /// <returns>The System.DateTime object that was read</returns>
         public static DateTime GetDateTime(string inputPrompt, string inputFormat)
         {
