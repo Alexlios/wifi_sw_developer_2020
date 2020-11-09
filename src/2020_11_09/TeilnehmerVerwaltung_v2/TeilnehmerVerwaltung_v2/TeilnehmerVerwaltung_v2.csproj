@@ -41,8 +41,9 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
-    <Reference Include="WIFI.ToolLibrary.ConsoleIO">
-      <HintPath>..\..\..\2020_11_05\WIFI.ToolLibrary\WIFI.ToolLibrary.Console\bin\Debug\WIFI.ToolLibrary.ConsoleIO.dll</HintPath>
+    <Reference Include="WIFI.ToolLibrary.ConsoleIO, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\REDIST\WIFI.ToolLibrary.ConsoleIO.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

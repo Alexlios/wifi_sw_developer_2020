@@ -57,7 +57,8 @@ namespace TeilnehmerVerwaltung_v2
             if (ConsoleTools.GetBool("Mochten sie die Teilnehmer abspeichern? (Y/N): "))
             {
                 //Abfrage Dateiname und abspeichern
-                string filePath = ConsoleTools.GetString("Dateiname: ");
+                string filePath = ConsoleTools.GetString("Dateiname ([Dateiname] ohne Endung: ");
+                filePath += ".csv";
                 using (StreamWriter sw = new StreamWriter(filePath, true))
                 {
                     foreach (Teilnehmer t in teilnehmer)
