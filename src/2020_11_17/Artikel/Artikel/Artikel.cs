@@ -27,7 +27,7 @@ namespace Artikel
             }
             set
             {
-                if(!string.IsNullOrEmpty(value))
+                if(!string.IsNullOrEmpty(value) && _bezeichnung == "undefined")
                 {
                     _bezeichnung = value;
                 }
@@ -52,7 +52,7 @@ namespace Artikel
             {
                 if(!(value < 0))
                 {
-                    _preis = value;
+                    _preis = Math.Round(value, 2);
                 }
             }
         }
@@ -83,6 +83,7 @@ namespace Artikel
 
         public Artikel(string bezeichnung, decimal preis, ArtikelStatus status)
         {
+            _bezeichnung = "undefined";
             Bezeichnung = bezeichnung;
             _code = Guid.NewGuid();
             Preis = preis;
@@ -93,9 +94,9 @@ namespace Artikel
 
         #region PublicMethods
 
-        public string GetInfo()
+        public string GetInfoString()
         {
-            return $"Der Artikel {_bezeichnung}({_code}) kostet {_preis}EUR und hat den Status: {_status}.";
+            return $"Der Artikel {_bezeichnung}({_code}) kostet {_preis} EUR und hat den Status: {_status}.";
         }
 
         #endregion

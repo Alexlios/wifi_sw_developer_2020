@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Artikel
 {
@@ -10,9 +6,15 @@ namespace Artikel
     {
         static void Main(string[] args)
         {
-            Artikel artikel = new Artikel("Banana",200m,ArtikelStatus.Available);
+            Artikel artikel = new Artikel("Banana", 200m, ArtikelStatus.Available);
 
-            Console.WriteLine(artikel.GetInfo());
+            Console.WriteLine(artikel.GetInfoString());
+
+            artikel.Bezeichnung = "Apple";
+            artikel.Preis = 180.25m;
+            artikel.Status = ArtikelStatus.NotAvailable;
+
+            Console.WriteLine(artikel.GetInfoString());
         }
     }
 }
