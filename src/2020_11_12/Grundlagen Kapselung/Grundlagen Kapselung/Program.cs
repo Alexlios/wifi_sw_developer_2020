@@ -18,9 +18,9 @@ namespace Grundlagen_Kapselung
             auto.SpeedUp(150.5);
             auto.DisplayInfos();
 
-            auto.Type = "Limousine";
             auto.CurrentSpeed = 53.7;
-
+            Console.WriteLine(auto.TypeInfo);
+            auto.DisplaySpeed();
         }
     }
 }

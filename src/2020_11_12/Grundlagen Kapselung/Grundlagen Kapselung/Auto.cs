@@ -6,14 +6,14 @@ namespace Grundlagen_Kapselung
     public class Auto
     {
         #region Fields
-        
+
         private string _type;
         private int _maxSpeed;
         private double _currentSpeed;
         private string _description;
-        
+
         #endregion
-        
+
         #region Properties
 
         public string Type
@@ -65,6 +65,20 @@ namespace Grundlagen_Kapselung
                 }
             }
         }
+        public string TypeInfo
+        {
+            get
+            {
+                return _type + " / " + _description;
+            }
+        }
+        public string SpeedInfo
+        {
+            get
+            {
+                return "" + _currentSpeed + '/' + _maxSpeed + "km/h";
+            }
+        }
 
         #endregion
 
@@ -109,6 +123,7 @@ namespace Grundlagen_Kapselung
             ConsoleTools.DisplayMesssage($"MaxSpeed:     {_maxSpeed} km/h", ConsoleColor.Green);
             ConsoleTools.DisplayMesssage($"CurrentSpeed: {_currentSpeed} km/h", ConsoleColor.Green);
             ConsoleTools.DisplayMesssage($"Description:  {_description}", ConsoleColor.Green);
+            ConsoleTools.DisplayMesssage("");
         }
 
         /// <summary>
@@ -116,7 +131,7 @@ namespace Grundlagen_Kapselung
         /// </summary>
         public void DisplaySpeed()
         {
-            ConsoleTools.DisplayMesssage($"Speed of {_type}: {_currentSpeed}/{_maxSpeed}km/h");
+            ConsoleTools.DisplayMesssage($"Speed of {_type}: {SpeedInfo}", ConsoleColor.Cyan);
         }
 
         #endregion
@@ -126,7 +141,7 @@ namespace Grundlagen_Kapselung
         /// <summary>
         /// Increases the speed of the car by a given value
         /// </summary>
-        /// <param name="delta">The change of speed</param>
+        /// <param name="delta">The change of speed. Negative value will decrease the speed</param>
         public void SpeedUp(double delta)
         {
             double tempSpeed = _currentSpeed;
@@ -147,6 +162,15 @@ namespace Grundlagen_Kapselung
                     _currentSpeed = tempSpeed;
                 }
             }
+        }
+
+        /// <summary>
+        /// Decreases the speed of the car by a given value
+        /// </summary>
+        /// <param name="delta">The change of speed. Negative value will increase the speed</param>
+        public void SpeedDown(double delta)
+        {
+            SpeedUp(delta * -1);
         }
 
         #endregion

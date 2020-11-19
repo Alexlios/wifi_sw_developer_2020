@@ -22,6 +22,19 @@
             <param name="message">The message that will be displayed</param>
             <param name="messageColor">The System.ConsoleColor that will be used</param>
         </member>
+        <member name="M:WIFI.ToolLibrary.ConsoleIO.ConsoleTools.DisplayMesssage(System.Object)">
+            <summary>
+            Displays a given message
+            </summary>
+            <param name="message">The message that will be displayed</param>
+        </member>
+        <member name="M:WIFI.ToolLibrary.ConsoleIO.ConsoleTools.DisplayMesssage(System.Object,System.ConsoleColor)">
+            <summary>
+            Displays a given message with a given System.ConsoleColor
+            </summary>
+            <param name="message">The message that will be displayed</param>
+            <param name="messageColor">The System.ConsoleColor that will be used</param>
+        </member>
         <member name="M:WIFI.ToolLibrary.ConsoleIO.ConsoleTools.GetInt(System.String)">
             <summary>
             Reads a System.Int32 value from the console
@@ -78,6 +91,13 @@
             </summary>
             <param name="input">the input that will be checked</param>
             <returns>true: input was a double   false: input was not a double</returns>
+        </member>
+        <member name="M:WIFI.ToolLibrary.RandomAdv.NextString(System.Int32)">
+            <summary>
+            Generates a random System.String with universal printable ASCII characters
+            </summary>
+            <param name="length">The length of the string</param>
+            <returns>The generated string</returns>
         </member>
     </members>
 </doc>

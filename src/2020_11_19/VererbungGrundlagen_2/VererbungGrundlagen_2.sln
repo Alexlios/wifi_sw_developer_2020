@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30709.132
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VererbungGrundlagen_2", "VererbungGrundlagen_2\VererbungGrundlagen_2.csproj", "{CDCEE66F-CA2E-4C42-8CDA-82C0A32EF62C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CDCEE66F-CA2E-4C42-8CDA-82C0A32EF62C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDCEE66F-CA2E-4C42-8CDA-82C0A32EF62C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDCEE66F-CA2E-4C42-8CDA-82C0A32EF62C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDCEE66F-CA2E-4C42-8CDA-82C0A32EF62C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EB4BEAC6-448B-4BD7-9A8E-35815BF11D98}
+	EndGlobalSection
+EndGlobal

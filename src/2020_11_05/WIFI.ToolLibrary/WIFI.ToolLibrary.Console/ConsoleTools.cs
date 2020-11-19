@@ -8,7 +8,7 @@ namespace WIFI.ToolLibrary.ConsoleIO
     /// </summary>
     public class ConsoleTools
     {
-        #region public Output
+        #region PublicOutput
 
         /// <summary>
         /// Displays a given message
@@ -32,9 +32,31 @@ namespace WIFI.ToolLibrary.ConsoleIO
             Console.ForegroundColor = oldColor;
         }
 
+        /// <summary>
+        /// Displays a given message
+        /// </summary>
+        /// <param name="message">The message that will be displayed</param>
+        public static void DisplayMesssage(object message)
+        {
+            DisplayMesssage("" + message, Console.ForegroundColor);
+        }
+
+        /// <summary>
+        /// Displays a given message with a given System.ConsoleColor
+        /// </summary>
+        /// <param name="message">The message that will be displayed</param>
+        /// <param name="messageColor">The System.ConsoleColor that will be used</param>
+        public static void DisplayMesssage(object message, ConsoleColor messageColor)
+        {
+            ConsoleColor oldColor = Console.ForegroundColor;
+            Console.ForegroundColor = messageColor;
+            Console.WriteLine("" + message);
+            Console.ForegroundColor = oldColor;
+        }
+
         #endregion
 
-        #region public Input
+        #region PublicInput
 
         /// <summary>
         /// Reads a System.Int32 value from the console
@@ -220,14 +242,14 @@ namespace WIFI.ToolLibrary.ConsoleIO
 
         #endregion
 
-        #region public Checkers
+        #region PrivateCheckers
 
         /// <summary>
         /// Checks if an input is a number or not. The number has to be > 0
         /// </summary>
         /// <param name="input">the input that will be checked</param>
         /// <returns>true: input was a number   false: input was not a number</returns>
-        public static bool StringIsInteger(string input)
+        private static bool StringIsInteger(string input)
         {
             //declarations
             bool isInteger = true;
@@ -259,7 +281,7 @@ namespace WIFI.ToolLibrary.ConsoleIO
         /// </summary>
         /// <param name="input">the input that will be checked</param>
         /// <returns>true: input was a double   false: input was not a double</returns>
-        public static bool StringIsDouble(string input)
+        private static bool StringIsDouble(string input)
         {
             //declarations
             bool isDouble = true;

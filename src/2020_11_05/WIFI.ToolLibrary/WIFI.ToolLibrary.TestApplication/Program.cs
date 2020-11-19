@@ -7,8 +7,10 @@ namespace WIFI.ToolLibrary.TestApplication
     {
         static void Main(string[] args)
         {
-            ConsoleTools.DisplayMesssage("Ich werd ueber die Library ausgegeben!", ConsoleColor.Cyan);
-            ConsoleTools.GetString("Brutus hau raus: ");
+            Random rnd = new Random();
+            RandomAdv rndAdv = new RandomAdv();
+
+            ConsoleTools.DisplayMesssage(rndAdv.NextString(100));
         }
     }
 }
