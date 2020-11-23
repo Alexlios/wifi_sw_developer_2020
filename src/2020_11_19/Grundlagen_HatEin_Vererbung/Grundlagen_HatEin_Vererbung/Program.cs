@@ -11,11 +11,12 @@ namespace Grundlagen_HatEin_Vererbung
         static void Main(string[] args)
         {
             Vehicle v = new Vehicle("Audi A3", "Panamera S", VehicleState.Unlocked, 30000);
-            
 
-            Radio r = new Radio();
-            r.SetPowerState(Power.On);
-            r.MakeNoise();
+            while (true)
+            {
+                v.Drive();
+                Console.ReadLine();
+            }
         }
     }
 }

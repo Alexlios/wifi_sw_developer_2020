@@ -85,15 +85,15 @@ namespace Grundlagen_HatEin_Vererbung
             switch (newPowerState)
             {
                 case Power.On:
-                    Console.WriteLine("AN");
+                    Console.WriteLine("Radio: AN");
                     break;
 
                 case Power.Off:
-                    Console.WriteLine("AUS");
+                    Console.WriteLine("Radio: AUS");
                     break;
 
                 case Power.Suspend:
-                    Console.WriteLine("Standby");
+                    Console.WriteLine("Radio: Standby");
                     break;
             }
             _powerState = newPowerState;
