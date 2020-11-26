@@ -10,7 +10,7 @@ namespace MenuItemExample
     {
         static void Main(string[] args)
         {
-            MenuItem mi = new MenuItem("Item 1", 'A');
+            MenuItem mi = new MenuItem("Itemmm 1", 'A');
             ColoredMenuItem cmi = new ColoredMenuItem("Item 2", 'B', ConsoleColor.Green);
             EmptyItem ei = new EmptyItem();
 

@@ -9,7 +9,7 @@ namespace MenuItemExample
     public class MenuItem : IMenuItem
     {
         private readonly string _description;
-        private readonly char _code;
+        private readonly ConsoleKey _code;
 
 
         public string Description
@@ -20,7 +20,7 @@ namespace MenuItemExample
             }
         }
 
-        public char Code
+        public ConsoleKey Code
         {
             get
             {
@@ -29,7 +29,7 @@ namespace MenuItemExample
         }
 
 
-        public MenuItem(string description, char code)
+        public MenuItem(string description, ConsoleKey code)
         {
             _description = description;
             _code = code;
@@ -49,6 +49,10 @@ namespace MenuItemExample
                 result += '.';
             }
             return result;
+        }
+
+        public void Action()
+        {
         }
     }
 }
