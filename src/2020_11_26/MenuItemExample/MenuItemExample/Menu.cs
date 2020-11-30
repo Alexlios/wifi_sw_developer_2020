@@ -80,7 +80,7 @@ namespace MenuItemExample
 
             foreach (IMenuItem item in _itemList.Values)
             {
-                if (item.Code == code)
+                if (item.Code == code && item.Visible)
                 {
                     result = item;
                     break;

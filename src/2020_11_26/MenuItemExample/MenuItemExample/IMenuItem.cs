@@ -8,8 +8,8 @@ namespace MenuItemExample
 
         string Description { get; }
         ConsoleKey Code { get; }
-        bool Selectable { get; set; }
-        bool Visible { get; set; }
+        bool Selectable { get; }
+        bool Visible { get; }
 
         #endregion
 
@@ -19,5 +19,10 @@ namespace MenuItemExample
         void Action();
 
         #endregion
+    }
+
+    public interface IMenuItemUpdateSelectable : IMenuItem
+    {
+        new bool Selectable { get; set; }
     }
 }

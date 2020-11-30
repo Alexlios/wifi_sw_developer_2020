@@ -8,7 +8,7 @@ namespace MenuItemExample
 {
     class EmptyItem : IMenuItem
     {
-         public string Description
+        public string Description
         {
             get
             {
@@ -21,6 +21,22 @@ namespace MenuItemExample
             get
             {
                 return ConsoleKey.Sleep;
+            }
+        }
+
+        public bool Selectable
+        {
+            get
+            {
+                return false;
+            }
+        }
+
+        public bool Visible
+        {
+            get
+            {
+                return true;
             }
         }
 

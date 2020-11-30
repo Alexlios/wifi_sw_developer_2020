@@ -6,11 +6,18 @@ using System.Threading.Tasks;
 
 namespace MenuItemExample
 {
-    public class MenuItem : IMenuItem
+    public class MenuItem : IMenuItemUpdateSelectable
     {
+        #region PrivateFields
+
         private readonly string _description;
         private readonly ConsoleKey _code;
+        protected bool _selectable;
+        protected bool _visible;
 
+        #endregion
+
+        #region Properties
 
         public string Description
         {
@@ -28,17 +35,65 @@ namespace MenuItemExample
             }
         }
 
+        public bool Selectable
+        {
+            get
+            {
+                return _selectable;
+            }
+            set
+            {
+                _selectable = value;
+            }
+        }
+
+        public bool Visible
+        {
+            get
+            {
+                return _visible;
+            }
+        }
+
+        #endregion
+
+        #region Constructors
 
         public MenuItem(string description, ConsoleKey code)
         {
             _description = description;
             _code = code;
+            _selectable = true;
+            _visible = true;
         }
+
+        public MenuItem(string description, ConsoleKey code, bool selectable, bool visible)
+        {
+            _description = description;
+            _code = code;
+            _selectable = selectable;
+            _visible = visible;
+        }
+
+        #endregion
+
+        #region PublicMethods
 
         public virtual void Display(int width)
         {
-            Console.WriteLine(_description + GetSpacer(width) + _code);
+            if(_visible)
+            {
+                Console.WriteLine(_description + GetSpacer(width) + _code);
+            }
         }
+
+        public void Action()
+        {
+        }
+
+        #endregion
+
+        #region PrivateMethods
 
         private string GetSpacer(int width)
         {
@@ -50,9 +105,7 @@ namespace MenuItemExample
             }
             return result;
         }
-
-        public void Action()
-        {
-        }
+        
+        #endregion
     }
 }

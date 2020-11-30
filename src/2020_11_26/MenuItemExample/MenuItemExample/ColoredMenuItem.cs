@@ -27,12 +27,20 @@ namespace MenuItemExample
             _itemColor = itemColor;
         }
 
+        public ColoredMenuItem(string description, ConsoleKey code, ConsoleColor itemColor, bool selectable, bool visible) : base(description, code,selectable, visible)
+        {
+            _itemColor = itemColor;
+        }
+
         public override void Display(int width)
         {
-            ConsoleColor tmp = Console.ForegroundColor;
-            Console.ForegroundColor = _itemColor;
-            base.Display(width);
-            Console.ForegroundColor = tmp;
+            if(_visible)
+            {
+                ConsoleColor tmp = Console.ForegroundColor;
+                Console.ForegroundColor = _itemColor;
+                base.Display(width);
+                Console.ForegroundColor = tmp;
+            }
         }
     }
 }
