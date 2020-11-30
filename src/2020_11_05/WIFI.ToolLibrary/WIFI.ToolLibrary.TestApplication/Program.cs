@@ -7,10 +7,7 @@ namespace WIFI.ToolLibrary.TestApplication
     {
         static void Main(string[] args)
         {
-            Random rnd = new Random();
-            RandomAdv rndAdv = new RandomAdv();
-
-            ConsoleTools.DisplayMesssage(rndAdv.NextString(100));
+            var jahr = ConsoleTools.GetInt("Geburtsjahr eingeben: ");
         }
     }
 }

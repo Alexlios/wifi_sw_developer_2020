@@ -35,6 +35,55 @@
             <param name="message">The message that will be displayed</param>
             <param name="messageColor">The System.ConsoleColor that will be used</param>
         </member>
+        <member name="M:WIFI.ToolLibrary.ConsoleIO.ConsoleTools.GetInt(System.String,WIFI.ToolLibrary.ConsoleIO.DisplayErrorHandler)">
+            <summary>
+            Reads a System.Int32 value from the console
+            </summary>
+            <param name="inputPrompt">Prompt the user will see before the input</param>
+            <param name="displayErrorHandler">The Method with which errors will be displayed</param>
+            <returns>The System.Int32 that was read</returns>
+        </member>
+        <member name="M:WIFI.ToolLibrary.ConsoleIO.ConsoleTools.GetDouble(System.String,WIFI.ToolLibrary.ConsoleIO.DisplayErrorHandler)">
+            <summary>
+            Reads a System.Double value from the console
+            </summary>
+            <param name="inputPrompt">Prompt the user will see before the input</param>
+            <param name="displayErrorHandler">The Method with which errors will be displayed</param>
+            <returns>The System.Double that was read</returns>
+        </member>
+        <member name="M:WIFI.ToolLibrary.ConsoleIO.ConsoleTools.GetString(System.String,WIFI.ToolLibrary.ConsoleIO.DisplayErrorHandler)">
+            <summary>
+            Reads a System.String from the console
+            </summary>
+            <param name="inputPrompt">Prompt the user will see before the input</param>
+            <param name="displayErrorHandler">The Method with which errors will be displayed</param>
+            <returns>The System.String that was read</returns>
+        </member>
+        <member name="M:WIFI.ToolLibrary.ConsoleIO.ConsoleTools.GetBool(System.String,WIFI.ToolLibrary.ConsoleIO.DisplayErrorHandler)">
+            <summary>
+            Reads a System.Boolean from the console
+            </summary>
+            <param name="inputPrompt">Prompt the user will see before the input</param>
+            <param name="displayErrorHandler">The Method with which errors will be displayed</param>
+            <returns>The System.Boolean that was read</returns>
+        </member>
+        <member name="M:WIFI.ToolLibrary.ConsoleIO.ConsoleTools.GetDateTime(System.String,WIFI.ToolLibrary.ConsoleIO.DisplayErrorHandler)">
+            <summary>
+            Reads a System.DateTime object value from the console. Input format: [dd.MM.yyyy HH:mm:ss]
+            </summary>
+            <param name="inputPrompt">Prompt the user will see before the input</param>
+            <param name="displayErrorHandler">The Method with which errors will be displayed</param>
+            <returns>The System.DateTime object that was read</returns>
+        </member>
+        <member name="M:WIFI.ToolLibrary.ConsoleIO.ConsoleTools.GetDateTime(System.String,System.String,WIFI.ToolLibrary.ConsoleIO.DisplayErrorHandler)">
+            <summary>
+            Reads a System.DateTime object value with a specified format from the console
+            </summary>
+            <param name="inputPrompt">Prompt the user will see before the input</param>
+            <param name="inputFormat">The format in which the DateTime is read (example: [dd.MM.yyyy HH:mm:ss])</param>
+            <param name="displayErrorHandler">The Method with which errors will be displayed</param>
+            <returns>The System.DateTime object that was read</returns>
+        </member>
         <member name="M:WIFI.ToolLibrary.ConsoleIO.ConsoleTools.GetInt(System.String)">
             <summary>
             Reads a System.Int32 value from the console
@@ -91,6 +140,12 @@
             </summary>
             <param name="input">the input that will be checked</param>
             <returns>true: input was a double   false: input was not a double</returns>
+        </member>
+        <member name="M:WIFI.ToolLibrary.ConsoleIO.DisplayErrorMethods.DisplayErrorStandard(System.String)">
+            <summary>
+            Prints the error message in a Console.WriteLine()
+            </summary>
+            <param name="errorMessage">The message to be displayed</param>
         </member>
         <member name="M:WIFI.ToolLibrary.RandomAdv.NextString(System.Int32)">
             <summary>

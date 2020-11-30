@@ -56,14 +56,15 @@ namespace WIFI.ToolLibrary.ConsoleIO
 
         #endregion
 
-        #region PublicInput
+        #region PublicInputWithErrorDelegates
 
         /// <summary>
         /// Reads a System.Int32 value from the console
         /// </summary>
         /// <param name="inputPrompt">Prompt the user will see before the input</param>
+        /// <param name="displayErrorHandler">The Method with which errors will be displayed</param>
         /// <returns>The System.Int32 that was read</returns>
-        public static int GetInt(string inputPrompt)
+        public static int GetInt(string inputPrompt, DisplayErrorHandler displayErrorHandler)
         {
             //declarations
             int result = 0;
@@ -80,7 +81,7 @@ namespace WIFI.ToolLibrary.ConsoleIO
                 //validating the input
                 if (!StringIsInteger(input))
                 {
-                    Console.WriteLine("Input was not a number!");
+                    displayErrorHandler("Input was not a number!");
                     isInputValid = false;
                     continue;
                 }
@@ -97,8 +98,9 @@ namespace WIFI.ToolLibrary.ConsoleIO
         /// Reads a System.Double value from the console
         /// </summary>
         /// <param name="inputPrompt">Prompt the user will see before the input</param>
+        /// <param name="displayErrorHandler">The Method with which errors will be displayed</param>
         /// <returns>The System.Double that was read</returns>
-        public static double GetDouble(string inputPrompt)
+        public static double GetDouble(string inputPrompt, DisplayErrorHandler displayErrorHandler)
         {
             //declarations
             double result = 0;
@@ -115,7 +117,7 @@ namespace WIFI.ToolLibrary.ConsoleIO
                 //validating the input
                 if (!StringIsDouble(input))
                 {
-                    Console.WriteLine("Input was not a double!");
+                    displayErrorHandler("Input was not a double!");
                     isInputValid = false;
                     continue;
                 }
@@ -132,8 +134,9 @@ namespace WIFI.ToolLibrary.ConsoleIO
         /// Reads a System.String from the console
         /// </summary>
         /// <param name="inputPrompt">Prompt the user will see before the input</param>
+        /// <param name="displayErrorHandler">The Method with which errors will be displayed</param>
         /// <returns>The System.String that was read</returns>
-        public static string GetString(string inputPrompt)
+        public static string GetString(string inputPrompt, DisplayErrorHandler displayErrorHandler)
         {
             string result = string.Empty;
 
@@ -144,7 +147,7 @@ namespace WIFI.ToolLibrary.ConsoleIO
             //if the first input was empty and while it is empty, repeating the previous step with error message
             while (string.IsNullOrEmpty(result))
             {
-                Console.WriteLine("Input was empty!");
+                displayErrorHandler("Input was empty!");
                 Console.Write(inputPrompt);
                 result = Console.ReadLine();
             }
@@ -155,8 +158,9 @@ namespace WIFI.ToolLibrary.ConsoleIO
         /// Reads a System.Boolean from the console
         /// </summary>
         /// <param name="inputPrompt">Prompt the user will see before the input</param>
+        /// <param name="displayErrorHandler">The Method with which errors will be displayed</param>
         /// <returns>The System.Boolean that was read</returns>
-        public static bool GetBool(string inputPrompt)
+        public static bool GetBool(string inputPrompt, DisplayErrorHandler displayErrorHandler)
         {
             //declarations
             bool result = false;
@@ -186,7 +190,7 @@ namespace WIFI.ToolLibrary.ConsoleIO
                         break;
 
                     default:
-                        Console.WriteLine("Invalid Input. Use (Y or y) for yes and (N or n) for no");
+                        displayErrorHandler("Invalid Input. Use (Y or y) for yes and (N or n) for no");
                         isInputValid = false;
                         break;
                 }
@@ -201,10 +205,11 @@ namespace WIFI.ToolLibrary.ConsoleIO
         /// Reads a System.DateTime object value from the console. Input format: [dd.MM.yyyy HH:mm:ss]
         /// </summary>
         /// <param name="inputPrompt">Prompt the user will see before the input</param>
+        /// <param name="displayErrorHandler">The Method with which errors will be displayed</param>
         /// <returns>The System.DateTime object that was read</returns>
-        public static DateTime GetDateTime(string inputPrompt)
+        public static DateTime GetDateTime(string inputPrompt, DisplayErrorHandler displayErrorHandler)
         {
-            return GetDateTime(inputPrompt, "dd.MM.yyyy HH:mm:ss");
+            return GetDateTime(inputPrompt, "dd.MM.yyyy HH:mm:ss", displayErrorHandler);
         }
 
         /// <summary>
@@ -212,8 +217,9 @@ namespace WIFI.ToolLibrary.ConsoleIO
         /// </summary>
         /// <param name="inputPrompt">Prompt the user will see before the input</param>
         /// <param name="inputFormat">The format in which the DateTime is read (example: [dd.MM.yyyy HH:mm:ss])</param>
+        /// <param name="displayErrorHandler">The Method with which errors will be displayed</param>
         /// <returns>The System.DateTime object that was read</returns>
-        public static DateTime GetDateTime(string inputPrompt, string inputFormat)
+        public static DateTime GetDateTime(string inputPrompt, string inputFormat, DisplayErrorHandler displayErrorHandler)
         {
             //declarations
             DateTime userInputValue = DateTime.MinValue;
@@ -231,13 +237,80 @@ namespace WIFI.ToolLibrary.ConsoleIO
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"Error: {ex.Message}");
+                    displayErrorHandler($"Error: {ex.Message}");
                     userInputIsValid = false;
                 }
             }
             while (!userInputIsValid);
 
             return userInputValue;
+        }
+
+        #endregion
+
+        #region PublicInputWithoutErrorDelegates
+
+        /// <summary>
+        /// Reads a System.Int32 value from the console
+        /// </summary>
+        /// <param name="inputPrompt">Prompt the user will see before the input</param>
+        /// <returns>The System.Int32 that was read</returns>
+        public static int GetInt(string inputPrompt)
+        {
+            return GetInt(inputPrompt, DisplayErrorMethods.DisplayErrorStandard);
+        }
+
+        /// <summary>
+        /// Reads a System.Double value from the console
+        /// </summary>
+        /// <param name="inputPrompt">Prompt the user will see before the input</param>
+        /// <returns>The System.Double that was read</returns>
+        public static double GetDouble(string inputPrompt)
+        {
+            return GetDouble(inputPrompt, DisplayErrorMethods.DisplayErrorStandard);
+        }
+
+        /// <summary>
+        /// Reads a System.String from the console
+        /// </summary>
+        /// <param name="inputPrompt">Prompt the user will see before the input</param>
+        /// <returns>The System.String that was read</returns>
+        public static string GetString(string inputPrompt)
+        {
+            return GetString(inputPrompt, DisplayErrorMethods.DisplayErrorStandard);
+        }
+
+        /// <summary>
+        /// Reads a System.Boolean from the console
+        /// </summary>
+        /// <param name="inputPrompt">Prompt the user will see before the input</param>
+        /// <returns>The System.Boolean that was read</returns>
+        public static bool GetBool(string inputPrompt)
+        {
+            return GetBool(inputPrompt, DisplayErrorMethods.DisplayErrorStandard);
+        }
+
+        //Get File,Directory
+
+        /// <summary>
+        /// Reads a System.DateTime object value from the console. Input format: [dd.MM.yyyy HH:mm:ss]
+        /// </summary>
+        /// <param name="inputPrompt">Prompt the user will see before the input</param>
+        /// <returns>The System.DateTime object that was read</returns>
+        public static DateTime GetDateTime(string inputPrompt)
+        {
+            return GetDateTime(inputPrompt, "dd.MM.yyyy HH:mm:ss", DisplayErrorMethods.DisplayErrorStandard);
+        }
+
+        /// <summary>
+        /// Reads a System.DateTime object value with a specified format from the console
+        /// </summary>
+        /// <param name="inputPrompt">Prompt the user will see before the input</param>
+        /// <param name="inputFormat">The format in which the DateTime is read (example: [dd.MM.yyyy HH:mm:ss])</param>
+        /// <returns>The System.DateTime object that was read</returns>
+        public static DateTime GetDateTime(string inputPrompt, string inputFormat)
+        {
+            return GetDateTime(inputPrompt, inputFormat, DisplayErrorMethods.DisplayErrorStandard);
         }
 
         #endregion
