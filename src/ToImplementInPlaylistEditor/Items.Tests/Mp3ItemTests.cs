@@ -13,6 +13,12 @@ namespace Items.Tests
     {
         private IPlaylistItem.IPlaylistItem _fixture;
 
+        [SetUp]
+        public void TestInit()
+        {
+            _fixture = new Mp3Item(@"C:\Users\user\Music\TestMediaFiles\001 - Bruno Mars - Grenade.mp3");
+        }
+
         #region Title
 
         #region GetTitle
@@ -21,7 +27,6 @@ namespace Items.Tests
         public void GetTitle()
         {
             //arrange
-            _fixture = new Mp3Item(@"C:\Users\user\Music\TestMediaFiles\001 - Bruno Mars - Grenade.mp3");
 
             //act
             var title = _fixture.Title;
@@ -93,7 +98,6 @@ namespace Items.Tests
         public void GetArtist()
         {
             //arrange
-            _fixture = new Mp3Item(@"C:\Users\user\Music\TestMediaFiles\001 - Bruno Mars - Grenade.mp3");
 
             //act
             var artist = _fixture.Artist;
@@ -120,7 +124,6 @@ namespace Items.Tests
         public void GetDuration()
         {
             //arrange
-            _fixture = new Mp3Item(@"C:\Users\user\Music\TestMediaFiles\001 - Bruno Mars - Grenade.mp3");
 
             //act
             var duration = _fixture.Duration;
@@ -146,7 +149,6 @@ namespace Items.Tests
         public void GetPath()
         {
             //arrange
-            _fixture = new Mp3Item(@"C:\Users\user\Music\TestMediaFiles\001 - Bruno Mars - Grenade.mp3");
 
             //act
             var path = _fixture.Path;
@@ -173,13 +175,27 @@ namespace Items.Tests
         public void GetThumbnail()
         {
             //arrange
-            _fixture = new Mp3Item(@"C:\Users\user\Music\TestMediaFiles\001 - Bruno Mars - Grenade.mp3");
 
             //act
             var thumbnail = _fixture.Thumbnail;
 
             //assert
             Assert.That(thumbnail, Is.Not.Null);
+            //Assert.That(thumbnail, Is.EqualTo("Bruno Mars"));
+
+        }
+
+        [Test]
+        public void GetThumbnail_WithMp3WithNoImage()
+        {
+            //arrange
+            _fixture = new Mp3Item(@"C:\Users\user\Music\TestMediaFiles\002 - Lena - Taken By A Stranger.mp3");
+
+            //act
+            var thumbnail = _fixture.Thumbnail;
+
+            //assert
+            Assert.That(thumbnail, Is.Null);
             //Assert.That(thumbnail, Is.EqualTo("Bruno Mars"));
 
         }
@@ -191,5 +207,6 @@ namespace Items.Tests
         #endregion
 
         #endregion
+
     }
 }

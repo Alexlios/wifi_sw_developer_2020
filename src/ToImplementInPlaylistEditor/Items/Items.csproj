@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{304691D6-11DB-4BD6-9F7D-CD2CA835901E}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <RootNamespace>Items</RootNamespace>
     <AssemblyName>Items</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
@@ -39,7 +42,6 @@
   <ItemGroup>
     <Compile Include="Mp3Item.cs" />
     <Compile Include="PictureItem.cs" />
-    <Compile Include="UselessMain.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
