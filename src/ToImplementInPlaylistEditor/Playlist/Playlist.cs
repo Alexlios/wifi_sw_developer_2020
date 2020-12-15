@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Playlist
 {
-    public class Playlist
+    public class Playlist : IPlaylist
     {
         #region PrivateFields
 
@@ -45,12 +45,9 @@ namespace Playlist
             {
                 var result = TimeSpan.Zero;
 
-                if(_items != null)
+                foreach (var item in _items)
                 {
-                    foreach (var item in _items)
-                    {
-                        result += item.Duration;
-                    }
+                    result += item.Duration;
                 }
 
                 return result;
@@ -62,7 +59,43 @@ namespace Playlist
             get => _items;
         }
 
+        public int Count
+        {
+            get => _items.Count;
+        }
+
         #endregion
 
+        #region Constructors
+
+        public Playlist(string name, string author, DateTime createdAt)
+        {
+            _name = name;
+            _author = author;
+            _createdAt = createdAt;
+
+            _items = new List<IPlaylistItem.IPlaylistItem>();
+        }
+
+        #endregion
+
+        #region PublicMethods
+
+        public void Add(IPlaylistItem.IPlaylistItem newItem)
+        {
+            _items.Add(newItem);
+        }
+
+        public void Remove(IPlaylistItem.IPlaylistItem newItem)
+        {
+            _items.Remove(newItem);
+        }
+
+        public void Clear()
+        {
+            _items.Clear();
+        }
+
+        #endregion
     }
 }
