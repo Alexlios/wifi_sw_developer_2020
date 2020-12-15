@@ -39,6 +39,14 @@ namespace Playlist
             set => _createdAt = value;
         }
 
+        public string CreationDateString
+        {
+            get
+            {
+                return _createdAt.ToShortDateString() + " " + _createdAt.ToShortTimeString();
+            }
+        }
+
         public TimeSpan Duration
         {
             get

@@ -52,11 +52,5 @@
     <Compile Include="IPlaylistRepository.cs" />
     <Compile Include="Playlist.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\PlaylistWindow\PlaylistWindow.csproj">
-      <Project>{f29296b7-0197-4614-9a56-f1c1a66fb21a}</Project>
-      <Name>PlaylistWindow</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
