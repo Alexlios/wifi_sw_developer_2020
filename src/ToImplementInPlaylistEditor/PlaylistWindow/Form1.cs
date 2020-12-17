@@ -1,34 +1,34 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Playlist;
+using System;
 using System.Windows.Forms;
 
 namespace PlaylistWindow
 {
     public partial class Form1 : Form
     {
-        private Playlist.IPlaylist _playlist;
+        private IPlaylist _playlist;
+        private readonly INewPlaylistCreator _newPlaylistCreator;
+        private readonly IPlaylistItemFactory _playlistItemFactory;
 
-        public Form1()
+        public Form1(INewPlaylistCreator newPlaylistCreator,IPlaylistItemFactory playlistItemFactory)
         {
             InitializeComponent();
+
+            _newPlaylistCreator = newPlaylistCreator;
+            _playlistItemFactory = playlistItemFactory;
         }
 
         private void NewPlaylist_Click(object sender, EventArgs e)
         {
-            var createPlaylistDialog = new NewPlaylist();
-
-            if (createPlaylistDialog.ShowDialog() != DialogResult.OK)
+            if (_newPlaylistCreator.StartDialog() != DialogResult.OK)
             {
                 return;
             }
 
-            _playlist = new Playlist.Playlist(createPlaylistDialog.Title, createPlaylistDialog.Author, DateTime.Now);
+            var title = _newPlaylistCreator.Title;
+            var author = _newPlaylistCreator.Author;
+
+            _playlist = new Playlist.Playlist(title, author, DateTime.Now);
 
             UpdatePlaylistDetails();
             UpdatePlaylistItems();
@@ -40,7 +40,7 @@ namespace PlaylistWindow
             listView1.Clear();
             imageList1.Images.Clear();
 
-            foreach(var item in _playlist.Items)
+            foreach (var item in _playlist.Items)
             {
                 ListViewItem lvi = new ListViewItem(item.ToString());
                 lvi.ImageIndex = index++;
@@ -62,17 +62,18 @@ namespace PlaylistWindow
 
         private void Button2_Click(object sender, EventArgs e)
         {
-            if(openFileDialog1.ShowDialog() != DialogResult.OK)
+            if (openFileDialog1.ShowDialog() != DialogResult.OK)
             {
                 return;
             }
 
-            foreach(var file in openFileDialog1.FileNames)
+            foreach (var file in openFileDialog1.FileNames)
             {
-                var item = new Mp3Item();
-                _playlist.Add(item);
-                UpdatePlaylistDetails();
-                UpdatePlaylistItems();
+                var item = _playlistItemFactory.Create(file);
+                if(item != null)
+                {
+                    _playlist.Add(item);
+                }
             }
         }
     }

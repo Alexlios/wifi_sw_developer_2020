@@ -51,7 +51,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(67, 28);
+            this.label2.Location = new System.Drawing.Point(228, 28);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(35, 13);
             this.label2.TabIndex = 1;
@@ -59,7 +59,7 @@
             // 
             // NewPLButton
             // 
-            this.NewPLButton.Location = new System.Drawing.Point(133, 28);
+            this.NewPLButton.Location = new System.Drawing.Point(465, 23);
             this.NewPLButton.Name = "NewPLButton";
             this.NewPLButton.Size = new System.Drawing.Size(75, 23);
             this.NewPLButton.TabIndex = 2;
@@ -69,7 +69,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(133, 57);
+            this.button2.Location = new System.Drawing.Point(465, 57);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 4;
@@ -118,6 +118,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Form1";
             this.ResumeLayout(false);
             this.PerformLayout();

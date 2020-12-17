@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace PlaylistWindow
 {
-    public partial class NewPlaylist : Form
+    public partial class NewPlaylist : Form, INewPlaylistCreator
     {
         public NewPlaylist()
         {
@@ -25,6 +25,11 @@ namespace PlaylistWindow
         public string Author
         {
             get => autorBox.Text;
+        }
+
+        public DialogResult StartDialog()
+        {
+            return ShowDialog();
         }
 
         private void CancelButton_Click(object sender, EventArgs e)
