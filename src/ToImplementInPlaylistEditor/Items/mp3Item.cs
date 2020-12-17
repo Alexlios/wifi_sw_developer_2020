@@ -83,7 +83,10 @@ namespace Items
 
         #region PublicMethods
 
-
+        public override string ToString()
+        {
+            return _artist + _title;
+        }
 
         #endregion
 

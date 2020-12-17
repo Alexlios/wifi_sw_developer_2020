@@ -1,4 +1,5 @@
 ﻿using Playlist;
+using PlaylistWindow.Properties;
 using System;
 using System.Windows.Forms;
 
@@ -30,6 +31,7 @@ namespace PlaylistWindow
 
             _playlist = new Playlist.Playlist(title, author, DateTime.Now);
 
+            EnableItemCommands();
             UpdatePlaylistDetails();
             UpdatePlaylistItems();
         }
@@ -45,7 +47,7 @@ namespace PlaylistWindow
                 ListViewItem lvi = new ListViewItem(item.ToString());
                 lvi.ImageIndex = index++;
                 lvi.Tag = item;
-                imageList1.Images.Add(item.Thumbnail);
+                imageList1.Images.Add((item.Thumbnail != null) ? item.Thumbnail : Resources.Missing);
 
                 listView1.Items.Add(lvi);
             }
@@ -73,6 +75,42 @@ namespace PlaylistWindow
                 if(item != null)
                 {
                     _playlist.Add(item);
+                }
+            }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            label1.Text = string.Empty;
+            label2.Text = string.Empty;
+            label3.Text = string.Empty;
+            label4.Text = string.Empty;
+
+            EnableItemCommands(false);
+        }
+
+        private void EnableItemCommands()
+        {
+            EnableItemCommands(true);
+        }
+
+        private void EnableItemCommands(bool enabled)
+        {
+            button2.Enabled = enabled;
+        }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            label4.Text = string.Empty;
+
+            foreach(ListViewItem item in listView1.SelectedItems)
+            {
+                var playlistItem = item.Tag as IPlaylistItem.IPlaylistItem;
+                if(playlistItem != null)
+                {
+                    label4.Text += $"Artist: {playlistItem.Artist} | Titel: {playlistItem.Title} | " +
+                        $"Dauer: {playlistItem.Duration.ToString(@"hh\:mm\:ss")} | {playlistItem.Path}";
+
                 }
             }
         }

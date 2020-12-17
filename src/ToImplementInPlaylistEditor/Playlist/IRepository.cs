@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace Playlist
 {
-    public interface IPlaylistRepository
+    public interface IRepository : IFileIdentifier
     {
+
+        void Save(string filePath, IPlaylist playlist);
+
+        IPlaylist Load(string filePath);
     }
 }
