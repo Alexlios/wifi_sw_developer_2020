@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Unity;
+using WIFI.PlaylistEditor.Factories;
+using WIFI.PlaylistEditor.PlaylistCreators;
+using WIFI.PlaylistEditor.Types;
 
 namespace WIFI.PlaylistEditor
 {
@@ -14,9 +18,13 @@ namespace WIFI.PlaylistEditor
         [STAThread]
         static void Main()
         {
+            var container = new UnityContainer();
+            container.RegisterType<INewPlaylistCreator, DummyCreator>();
+            container.RegisterType<IPlaylistItemFactory, PlaylistItemFactory>();
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new EditorWindow());
+            Application.Run(container.Resolve< EditorWindow>());
         }
     }
 }

@@ -4,16 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6054321B-1B5D-4900-9306-F0FDE06A4C12}</ProjectGuid>
+    <ProjectGuid>{392060B1-215A-412D-A0B2-09B6FBBB9D0C}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WIFI.PlaylistEditor.Types</RootNamespace>
-    <AssemblyName>WIFI.PlaylistEditor.Types</AssemblyName>
+    <RootNamespace>WIFI.PlaylistEditor.Factories</RootNamespace>
+    <AssemblyName>WIFI.PlaylistEditor.Factories</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,6 +24,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -30,31 +32,24 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
-    <Reference Include="taglib-sharp, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\taglib-sharp-netstandard2.0.2.1.0\lib\netstandard2.0\taglib-sharp.dll</HintPath>
-    </Reference>
+    <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IFileIdentifier.cs" />
-    <Compile Include="IPlaylist.cs" />
-    <Compile Include="IPlaylistItemFactory.cs" />
-    <Compile Include="IPlaylistItem.cs" />
-    <Compile Include="IRepository.cs" />
-    <Compile Include="Playlist.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PlaylistItemFactory.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <ProjectReference Include="..\WIFI.PlaylistEditor.Items\WIFI.PlaylistEditor.Items.csproj">
+      <Project>{a0a2322c-1525-48da-a79c-8dd2e073e89c}</Project>
+      <Name>WIFI.PlaylistEditor.Items</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WIFI.PlaylistEditor.Types\WIFI.PlaylistEditor.Types.csproj">
+      <Project>{6054321b-1b5d-4900-9306-f0fde06a4c12}</Project>
+      <Name>WIFI.PlaylistEditor.Types</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -6,60 +6,101 @@ using System.Threading.Tasks;
 
 namespace WIFI.PlaylistEditor.Types
 {
-    public class Playlist : IPlaylistRepository
+    public class Playlist : IPlaylist
     {
         #region PrivateFields
 
-        private string _description;
-        private List<IPlaylistItems> _itemList;
+        private string _name;
+        private string _author;
+        private DateTime _createdAt;
+        private List<IPlaylistItem> _items;
 
         #endregion
 
         #region Properties
 
-        public string Description
+        public string Name
+        {
+            get => _name;
+            set => _name = value;
+        }
+
+        public string Author
+        {
+            get => _author;
+            set => _author = value;
+
+        }
+
+        public DateTime CreatedAt
+        {
+            get => _createdAt;
+            set => _createdAt = value;
+        }
+
+        public string CreationDateString
         {
             get
             {
-                return _description;
+                return _createdAt.ToShortDateString() + " " + _createdAt.ToShortTimeString();
             }
         }
 
-        public List<IPlaylistItems> ItemsList
+        public TimeSpan Duration
         {
             get
             {
-                return _itemList;
+                var result = TimeSpan.Zero;
+
+                foreach (var item in _items)
+                {
+                    result += item.Duration;
+                }
+
+                return result;
             }
+        }
+
+        public IEnumerable<IPlaylistItem> Items
+        {
+            get => _items;
+        }
+
+        public int Count
+        {
+            get => _items.Count;
+        }
+
+        #endregion
+
+        #region Constructors
+
+        public Playlist(string name, string author, DateTime createdAt)
+        {
+            _name = name;
+            _author = author;
+            _createdAt = createdAt;
+
+            _items = new List<IPlaylistItem>();
         }
 
         #endregion
 
         #region PublicMethods
 
-        public void Load()
+        public void Add(IPlaylistItem newItem)
         {
-            //TODO
+            _items.Add(newItem);
         }
 
-        public void Save()
+        public void Remove(IPlaylistItem newItem)
         {
-            //TODO
-        }
-
-        public void Add(IPlaylistItems toAdd)
-        {
-            _itemList.Add(toAdd);
-        }
-
-        public void Remove(IPlaylistItems toRemove)
-        {
-            _itemList.Remove(toRemove);
+            _items.Remove(newItem);
         }
 
         public void Clear()
         {
-            _itemList = new List<IPlaylistItems>();
+            _items.Clear();
         }
 
         #endregion

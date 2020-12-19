@@ -5,36 +5,38 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WIFI.PlaylistEditor.Items
+namespace WIFI.PlaylistEditor.Types
 {
-    public interface IPictureItem
+    public interface IPlaylistItem
     {
-        #region Properties
-
-        string Titel
+        string Title
         {
             get;
+            set;
         }
 
         string Artist
         {
             get;
+            set;
         }
 
         TimeSpan Duration
         {
             get;
+            set;
         }
 
         string Path
         {
             get;
+            set;
         }
+
         Image Thumbnail
         {
             get;
+            set;
         }
-
-        #endregion
     }
 }
