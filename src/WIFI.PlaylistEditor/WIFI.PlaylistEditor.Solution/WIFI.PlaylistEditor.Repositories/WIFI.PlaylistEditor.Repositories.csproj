@@ -37,7 +37,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="M3URepository.cs" />
+    <Compile Include="M3uRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WIFI.PlaylistEditor.Types\WIFI.PlaylistEditor.Types.csproj">

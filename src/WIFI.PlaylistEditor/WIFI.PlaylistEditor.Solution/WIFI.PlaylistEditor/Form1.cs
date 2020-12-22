@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using WIFI.PlaylistEditor.PlaylistCreators;
 using WIFI.PlaylistEditor.Properties;
@@ -25,23 +18,6 @@ namespace WIFI.PlaylistEditor
 
             _newPlaylistCreator = newPlaylistCreator;
             _playlistItemFactory = playlistItemFactory;
-        }
-
-        private void NewPlaylist_Click(object sender, EventArgs e)
-        {
-            if (_newPlaylistCreator.StartDialog() != DialogResult.OK)
-            {
-                return;
-            }
-
-            var title = _newPlaylistCreator.Title;
-            var author = _newPlaylistCreator.Author;
-
-            _playlist = new Playlist(title, author, DateTime.Now);
-
-            EnableItemCommands();
-            UpdatePlaylistDetails();
-            UpdatePlaylistItems();
         }
 
         private void UpdatePlaylistItems()
@@ -68,9 +44,51 @@ namespace WIFI.PlaylistEditor
             PlaylistInfo.Text = "Playlist Info:\n" + _playlist.Name;
             PlaylistInfo.Text += "\nAutor: " + _playlist.Author;
             PlaylistInfo.Text += "\nErstellt am: " + _playlist.CreationDateString;
+            PlaylistInfo.Text += "\nGesamtdauer: " + _playlist.Duration.ToString("hh:mm");
         }
 
-        private void Button2_Click(object sender, EventArgs e)
+        private void EnableItemCommands()
+        {
+            EnableItemCommands(true);
+        }
+
+        private void EnableItemCommands(bool enabled)
+        {
+            ItemsButton.Enabled = enabled;
+        }
+
+        private IPlaylistItem GetSelectedPlaylistItem()
+        {
+            foreach (ListViewItem item in listView1.SelectedItems)
+            {
+                return item.Tag as IPlaylistItem;
+            }
+
+            return null;
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            PlaylistInfo.Text = "Playlist Info:";
+            TrackInfo.Text = "Track Info:";
+
+            EnableItemCommands(false);
+        }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            TrackInfo.Text = "Track Info:\n";
+
+            var playlistItem = GetSelectedPlaylistItem();
+            if (playlistItem != null)
+            {
+                TrackInfo.Text += $"Artist: {playlistItem.Artist} | Titel: {playlistItem.Title} | " +
+                    $"Dauer: {playlistItem.Duration.ToString(@"hh\:mm\:ss")} | {playlistItem.Path}";
+
+            }
+        }
+
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (openFileDialog1.ShowDialog() != DialogResult.OK)
             {
@@ -85,39 +103,37 @@ namespace WIFI.PlaylistEditor
                     _playlist.Add(item);
                 }
             }
+
+            UpdatePlaylistDetails();
+            UpdatePlaylistItems();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void newToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            PlaylistInfo.Text = "Playlist Info:";
-            TrackInfo.Text = "Track Info:";
-
-            EnableItemCommands(false);
-        }
-
-        private void EnableItemCommands()
-        {
-            EnableItemCommands(true);
-        }
-
-        private void EnableItemCommands(bool enabled)
-        {
-            ItemsButton.Enabled = enabled;
-        }
-
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            TrackInfo.Text = "Track Info:\n";
-
-            foreach (ListViewItem item in listView1.SelectedItems)
+            if (_newPlaylistCreator.StartDialog() != DialogResult.OK)
             {
-                var playlistItem = item.Tag as IPlaylistItem;
-                if (playlistItem != null)
-                {
-                    TrackInfo.Text += $"Artist: {playlistItem.Artist} | Titel: {playlistItem.Title} | " +
-                        $"Dauer: {playlistItem.Duration.ToString(@"hh\:mm\:ss")} | {playlistItem.Path}";
+                return;
+            }
 
-                }
+            var title = _newPlaylistCreator.Title;
+            var author = _newPlaylistCreator.Author;
+
+            _playlist = new Playlist(title, author, DateTime.Now);
+
+            EnableItemCommands();
+            UpdatePlaylistDetails();
+            UpdatePlaylistItems();
+        }
+
+        private void removeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var playlistItem = GetSelectedPlaylistItem();
+            if (playlistItem != null)
+            {
+                _playlist.Remove(playlistItem);
+
+                UpdatePlaylistDetails();
+                UpdatePlaylistItems();
             }
         }
     }

@@ -67,10 +67,10 @@ namespace WIFI.PlaylistEditor
             // TitleLabel
             // 
             this.TitleLabel.AutoSize = true;
-            this.TitleLabel.Font = new System.Drawing.Font("Unispace", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TitleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TitleLabel.Location = new System.Drawing.Point(3, 0);
             this.TitleLabel.Name = "TitleLabel";
-            this.TitleLabel.Size = new System.Drawing.Size(267, 35);
+            this.TitleLabel.Size = new System.Drawing.Size(199, 33);
             this.TitleLabel.TabIndex = 0;
             this.TitleLabel.Text = "PlaylistEditor";
             // 
@@ -119,8 +119,9 @@ namespace WIFI.PlaylistEditor
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.openToolStripMenuItem.Text = "Open";
+            this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // toolStripSeparator3
             // 
@@ -141,8 +142,9 @@ namespace WIFI.PlaylistEditor
             // newToolStripMenuItem1
             // 
             this.newToolStripMenuItem1.Name = "newToolStripMenuItem1";
-            this.newToolStripMenuItem1.Size = new System.Drawing.Size(103, 22);
+            this.newToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.newToolStripMenuItem1.Text = "New";
+            this.newToolStripMenuItem1.Click += new System.EventHandler(this.newToolStripMenuItem1_Click);
             // 
             // toolStripSeparator1
             // 
@@ -188,8 +190,9 @@ namespace WIFI.PlaylistEditor
             // removeToolStripMenuItem
             // 
             this.removeToolStripMenuItem.Name = "removeToolStripMenuItem";
-            this.removeToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.removeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.removeToolStripMenuItem.Text = "Remove";
+            this.removeToolStripMenuItem.Click += new System.EventHandler(this.removeToolStripMenuItem_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -213,7 +216,7 @@ namespace WIFI.PlaylistEditor
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1143, 599);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1140, 597);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
             // PlaylistInfo
@@ -224,8 +227,8 @@ namespace WIFI.PlaylistEditor
             this.PlaylistInfo.AutoEllipsis = true;
             this.PlaylistInfo.AutoSize = true;
             this.PlaylistInfo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.PlaylistInfo.Font = new System.Drawing.Font("Unispace", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PlaylistInfo.Location = new System.Drawing.Point(3, 38);
+            this.PlaylistInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PlaylistInfo.Location = new System.Drawing.Point(3, 36);
             this.PlaylistInfo.Margin = new System.Windows.Forms.Padding(3);
             this.PlaylistInfo.MinimumSize = new System.Drawing.Size(267, 100);
             this.PlaylistInfo.Name = "PlaylistInfo";
@@ -242,8 +245,8 @@ namespace WIFI.PlaylistEditor
             this.TrackInfo.AutoEllipsis = true;
             this.TrackInfo.AutoSize = true;
             this.TrackInfo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TrackInfo.Font = new System.Drawing.Font("Unispace", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TrackInfo.Location = new System.Drawing.Point(3, 179);
+            this.TrackInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TrackInfo.Location = new System.Drawing.Point(3, 177);
             this.TrackInfo.Margin = new System.Windows.Forms.Padding(3);
             this.TrackInfo.MinimumSize = new System.Drawing.Size(267, 100);
             this.TrackInfo.Name = "TrackInfo";
@@ -267,7 +270,7 @@ namespace WIFI.PlaylistEditor
             this.tableLayoutPanel2.Controls.Add(this.SkipBack, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.Play, 1, 1);
             this.tableLayoutPanel2.Controls.Add(this.pictureBox1, 0, 0);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 320);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 318);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 72.46377F));
@@ -321,16 +324,18 @@ namespace WIFI.PlaylistEditor
             // listView1
             // 
             this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(345, 38);
+            this.listView1.Location = new System.Drawing.Point(345, 36);
             this.listView1.Name = "listView1";
             this.tableLayoutPanel1.SetRowSpan(this.listView1, 3);
-            this.listView1.Size = new System.Drawing.Size(795, 558);
+            this.listView1.Size = new System.Drawing.Size(792, 558);
             this.listView1.TabIndex = 5;
+            this.listView1.TileSize = new System.Drawing.Size(64, 64);
             this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
             // 
             // openFileDialog1
             // 
-            this.openFileDialog1.FileName = "openFileDialog1";
+            this.openFileDialog1.Multiselect = true;
             // 
             // imageList1
             // 
@@ -350,6 +355,7 @@ namespace WIFI.PlaylistEditor
             this.Controls.Add(this.toolStrip1);
             this.Name = "EditorWindow";
             this.Text = "Playlist Editor";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
