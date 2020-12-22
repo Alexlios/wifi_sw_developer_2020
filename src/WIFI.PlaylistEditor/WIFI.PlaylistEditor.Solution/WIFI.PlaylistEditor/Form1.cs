@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
+using Wifi.PlaylistEditor.Repositories.MongoDb;
+using Wifi.PlaylistEditor.Repositories.MongoDb.Core;
 using WIFI.PlaylistEditor.PlaylistCreators;
 using WIFI.PlaylistEditor.Properties;
 using WIFI.PlaylistEditor.Types;
@@ -93,22 +95,6 @@ namespace WIFI.PlaylistEditor
             }
         }
 
-        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            saveFileDialog1.Filter = "M3U File (*.m3u)|*.m3u";
-
-            if (saveFileDialog1.ShowDialog() != DialogResult.OK)
-            {
-                return;
-            }
-
-            IRepository repository = _repositoryFactory.Create(saveFileDialog1.FileName);
-            repository.Save(saveFileDialog1.FileName, _playlist);
-
-            UpdatePlaylistDetails();
-            UpdatePlaylistItems();
-        }
-
         private void newToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             if (_newPlaylistCreator.StartDialog() != DialogResult.OK)
@@ -177,6 +163,31 @@ namespace WIFI.PlaylistEditor
                 UpdatePlaylistDetails();
                 UpdatePlaylistItems();
             }
+        }
+
+        private void playlistToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            saveFileDialog1.Filter = "M3U File (*.m3u)|*.m3u";
+
+            if (saveFileDialog1.ShowDialog() != DialogResult.OK)
+            {
+                return;
+            }
+
+            IRepository repository = _repositoryFactory.Create(saveFileDialog1.FileName);
+            repository.Save(saveFileDialog1.FileName, _playlist);
+
+            UpdatePlaylistDetails();
+            UpdatePlaylistItems();
+        }
+
+        private void databaseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            IDatabaseRepository databaseRepository = new MongoDbRepository(_playlistItemFactory);
+
+            databaseRepository.Save(_playlist.Name, _playlist);
+
+            MessageBox.Show("Playlist wurde gespeichert", "Hint", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }
