@@ -36,6 +36,7 @@ namespace WIFI.PlaylistEditor
                 lvi.ImageIndex = index++;
                 lvi.Tag = item;
                 imageList1.Images.Add((item.Thumbnail != null) ? item.Thumbnail : Resources.Missing);
+                imageList1.ImageSize = new System.Drawing.Size(64, 64);
 
                 listView1.Items.Add(lvi);
             }
@@ -48,7 +49,7 @@ namespace WIFI.PlaylistEditor
             PlaylistInfo.Text = "Playlist Info:\n" + _playlist.Name;
             PlaylistInfo.Text += "\nAutor: " + _playlist.Author;
             PlaylistInfo.Text += "\nErstellt am: " + _playlist.CreationDateString;
-            PlaylistInfo.Text += "\nGesamtdauer: " + _playlist.Duration.ToString("hh:mm");
+            PlaylistInfo.Text += "\nGesamtdauer: " + _playlist.Duration.ToString(@"hh\h\:mm\m\:ss\s");
         }
 
         private void EnableItemCommands()
@@ -86,40 +87,23 @@ namespace WIFI.PlaylistEditor
             var playlistItem = GetSelectedPlaylistItem();
             if (playlistItem != null)
             {
-                TrackInfo.Text += $"Artist: {playlistItem.Artist} | Titel: {playlistItem.Title} | " +
-                    $"Dauer: {playlistItem.Duration.ToString(@"hh\:mm\:ss")} | {playlistItem.Path}";
+                TrackInfo.Text += $"Artist: {playlistItem.Artist} \nTitel: {playlistItem.Title} \n" +
+                    $"Dauer: {playlistItem.Duration.ToString(@"hh\h\:mm\m\:ss\s")}";
 
             }
-        }
-
-        private void openToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (openFileDialog1.ShowDialog() != DialogResult.OK)
-            {
-                return;
-            }
-
-            foreach (var file in openFileDialog1.FileNames)
-            {
-                var item = _playlistItemFactory.Create(file);
-                if (item != null)
-                {
-                    _playlist.Add(item);
-                }
-            }
-
-            UpdatePlaylistDetails();
-            UpdatePlaylistItems();
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            saveFileDialog1.Filter = "M3U File (*.m3u)|*.m3u";
+
             if (saveFileDialog1.ShowDialog() != DialogResult.OK)
             {
                 return;
             }
 
             IRepository repository = _repositoryFactory.Create(saveFileDialog1.FileName);
+            repository.Save(saveFileDialog1.FileName, _playlist);
 
             UpdatePlaylistDetails();
             UpdatePlaylistItems();
@@ -154,5 +138,45 @@ namespace WIFI.PlaylistEditor
             }
         }
 
+        private void itemsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.Filter = "MP3 File (*.mp3)|*.mp3";
+            if (openFileDialog1.ShowDialog() != DialogResult.OK)
+            {
+                return;
+            }
+
+            foreach (var file in openFileDialog1.FileNames)
+            {
+                var item = _playlistItemFactory.Create(file);
+                if (item != null)
+                {
+                    _playlist.Add(item);
+                }
+            }
+
+            UpdatePlaylistDetails();
+            UpdatePlaylistItems();
+        }
+
+        private void playlistToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.Filter = "M3U File (*.m3u)|*.m3u";
+            if (openFileDialog1.ShowDialog() != DialogResult.OK)
+            {
+                return;
+            }
+
+            IRepository repository = _repositoryFactory.Create(openFileDialog1.FileName);
+            if(repository != null)
+            {
+                _playlist = repository.Load(openFileDialog1.FileName);
+
+
+                EnableItemCommands();
+                UpdatePlaylistDetails();
+                UpdatePlaylistItems();
+            }
+        }
     }
 }
