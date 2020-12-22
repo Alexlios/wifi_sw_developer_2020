@@ -50,6 +50,10 @@ namespace WIFI.PlaylistEditor.Items
             set => _thumbnail = value;
         }
 
+        public string Extension => ".mp3";
+
+        public string Description => "MP3 Music file";
+
         #endregion
 
         #region Constructors

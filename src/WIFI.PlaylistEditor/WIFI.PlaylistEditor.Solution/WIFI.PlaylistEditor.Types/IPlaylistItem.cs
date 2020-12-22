@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WIFI.PlaylistEditor.Types
 {
-    public interface IPlaylistItem
+    public interface IPlaylistItem : IFileIdentifier
     {
         string Title
         {
