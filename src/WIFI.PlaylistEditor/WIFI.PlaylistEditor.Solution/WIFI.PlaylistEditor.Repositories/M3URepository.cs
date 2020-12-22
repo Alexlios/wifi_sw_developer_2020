@@ -16,13 +16,15 @@ namespace WIFI.PlaylistEditor.Repositories
             _playlistItemFactory = playlistItemFactory;
         }
 
-
-
+        #region Properties
 
         public string Extension { get => ".m3u"; }
 
         public string Description { get => "m3u Playlist file"; }
 
+        #endregion
+
+        #region PublicMethods
 
         public IPlaylist Load(string filePath)
         {
@@ -59,6 +61,10 @@ namespace WIFI.PlaylistEditor.Repositories
                 sw.Write(text);
             }
         }
+
+        #endregion
+
+        #region PrivateMethods
 
         private M3uPlaylist MapToEntity(IPlaylist playlist)
         {
@@ -141,5 +147,7 @@ namespace WIFI.PlaylistEditor.Repositories
 
             return commentList;
         }
+
+        #endregion
     }
 }

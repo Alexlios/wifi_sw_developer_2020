@@ -11,13 +11,17 @@ namespace WIFI.PlaylistEditor
         private IPlaylist _playlist;
         private readonly INewPlaylistCreator _newPlaylistCreator;
         private readonly IPlaylistItemFactory _playlistItemFactory;
+        private readonly IRepositoryFactory _repositoryFactory;
 
-        public EditorWindow(INewPlaylistCreator newPlaylistCreator, IPlaylistItemFactory playlistItemFactory)
+        public EditorWindow(INewPlaylistCreator newPlaylistCreator,
+                            IPlaylistItemFactory playlistItemFactory,
+                            IRepositoryFactory repositoryFactory)
         {
             InitializeComponent();
 
             _newPlaylistCreator = newPlaylistCreator;
             _playlistItemFactory = playlistItemFactory;
+            _repositoryFactory = repositoryFactory;
         }
 
         private void UpdatePlaylistItems()
@@ -108,6 +112,19 @@ namespace WIFI.PlaylistEditor
             UpdatePlaylistItems();
         }
 
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (saveFileDialog1.ShowDialog() != DialogResult.OK)
+            {
+                return;
+            }
+
+            IRepository repository = _repositoryFactory.Create(saveFileDialog1.FileName);
+
+            UpdatePlaylistDetails();
+            UpdatePlaylistItems();
+        }
+
         private void newToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             if (_newPlaylistCreator.StartDialog() != DialogResult.OK)
@@ -136,5 +153,6 @@ namespace WIFI.PlaylistEditor
                 UpdatePlaylistItems();
             }
         }
+
     }
 }

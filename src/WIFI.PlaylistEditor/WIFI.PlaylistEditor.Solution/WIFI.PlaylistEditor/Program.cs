@@ -21,6 +21,7 @@ namespace WIFI.PlaylistEditor
             var container = new UnityContainer();
             container.RegisterType<INewPlaylistCreator, DummyCreator>();
             container.RegisterType<IPlaylistItemFactory, PlaylistItemFactory>();
+            container.RegisterType<IRepositoryFactory, RepositoryFactory>();
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
